@@ -12,6 +12,14 @@
         <servlet-name>Home</servlet-name>
         <servlet-class>controller.Users.Home</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>controller.Users.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateInforStudent</servlet-name>
+        <servlet-class>controller.Users.UpdateInforStudent</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateInforStudent</servlet-name>
+        <url-pattern>/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
