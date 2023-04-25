@@ -15,33 +15,26 @@
         <form action="inforcreate" method="POST">
             <table border="0.5">
                 <tbody>
+                   
                     <tr>
-                        <td>IN_ID</td>
-                        <td><input type="text" name="id" value="${in.in_id}"/> <br/></td>
+                        <td>user_id</td>
+                        <td><input type="text" name="id" /> <br/></td>
                     </tr>
                     <tr>
-                        <td>NAME</td>
-                        <td><input type="text" name="name" value="${in.Users.full_name}"/> <br/></td>
-                    </tr>
-                    <tr>
-                        <td>ROOM_NAME</td>
-                        <td><input type="text" name="r_name" value="${in.Rooms.name}"/> <br/></td>
-                    </tr>
-                    <tr>
-                        <td>FLOOR</td>
-                        <td><input type="text" name="floor" value="${in.Rooms.floor}"/> <br/></td>
+                        <td>room_id</td>
+                        <td><input type="text" name="r_id" /> <br/></td>
                     </tr>
                     <tr>
                         <td>PAYMENT_ID</td>
-                        <td><input type="text" name="p_id" value="${in.Payments.payment_id}"/> <br/></td>
+                        <td><input type="text" name="p_id" /> <br/></td>
                     </tr>
                     <tr>
                         <td>Room registration date</td>
-                        <td><input type="date" name="rrd" value="${in.room_registration_date}"/> <br/></td>
+                        <td><input type="date" name="rrd" /> <br/></td>
                     </tr>
                     <tr>
                         <td>Cancellation date</td>
-                        <td><input type="date" name="cd" value="${in.cancellation_date}"/></td>
+                        <td><input type="date" name="cd" /></td>
                     </tr>
                      <tr>
                         <td></td>
