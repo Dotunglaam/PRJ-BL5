@@ -64,7 +64,23 @@ public class Dorm extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.println("Cannot get the data");  
         }else{
-            request.setAttribute("dorm", dorm);
+            int size = dorm.size();
+            int page, numperpage = 5;
+            int num = (size % 5 == 0 ? (size / 5) : ((size / 5)) + 1);//số trang 
+            String xpage = request.getParameter("page");
+            if (xpage == null) {
+                page = 1;
+            } else {
+                page = Integer.parseInt(xpage);
+            }
+
+            int start, end;
+            start = (page - 1) * numperpage;
+            end = Math.min(page * numperpage, size);
+            ArrayList<Dormitories> list = d.getListByPage(dorm, start, end);
+            request.setAttribute("page", page);
+            request.setAttribute("num", num);
+            request.setAttribute("dorm", list);
             request.getRequestDispatcher("view/dorm.jsp").forward(request, response);
         }
         
