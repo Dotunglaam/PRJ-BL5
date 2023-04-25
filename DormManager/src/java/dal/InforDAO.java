@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modol.Dormitories;
@@ -23,15 +22,15 @@ import modol.Users;
  * @author ADMIN
  */
 public class InforDAO extends DBContext {
+
     public ArrayList<Informations> getListByPage(ArrayList<Informations> list,
-            int start,int end){
-        ArrayList<Informations> arr=new ArrayList<>();
-        for(int i=start;i<end;i++){
+            int start, int end) {
+        ArrayList<Informations> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
             arr.add(list.get(i));
         }
         return arr;
     }
-
 
     public ArrayList<Informations> getAllInfor() {
         ArrayList<Informations> infor = new ArrayList<>();
@@ -90,6 +89,39 @@ public class InforDAO extends DBContext {
         return infor;
     }
 
+    public void insert(Informations infor) {
+        PreparedStatement stm = null;
+        try {
+            String sql = "INSERT INTO [dbo].[Informations]\n"
+                    + "           ([user_id]\n"
+                    + "           ,[room_id]\n"
+                    + "           ,[payment_id]\n"
+                    + "           ,[room_registration_date]\n"
+                    + "           ,[cancellation_date])\n"
+                    + "            VALUES(?,?,?,?,?)";
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, infor.getUsers().getUser_id());
+            stm.setInt(2, infor.getRooms().getRoom_id());
+            stm.setInt(3, infor.getPayments().getPayment_id());
+            stm.setDate(4, infor.getRoom_registration_date());
+            stm.setDate(5, infor.getCancellation_date());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PaymentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PaymentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PaymentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     public void update(Informations infor) {
         PreparedStatement stm = null;
         try {
@@ -139,7 +171,7 @@ public class InforDAO extends DBContext {
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
                 Informations in = new Informations();
-                
+
                 Users u = new Users();
                 u.setUser_id(rs.getInt("user_id"));
                 u.setFull_name(rs.getString("full_name"));
@@ -194,17 +226,18 @@ public class InforDAO extends DBContext {
         }
         return null;
     }
+
     public ArrayList<Informations> search(String txt) {
         ArrayList<Informations> infor = new ArrayList<>();
         try {
-            String sql = "select * from Informations i join Rooms r on i.room_id =r.room_id \n" +
-"							join Users u  on i.user_id = u.user_id \n" +
-"							join Payments p on i.payment_id = p.payment_id \n" +
-"							where u.full_name like ? or r.name like ?";
+            String sql = "select * from Informations i join Rooms r on i.room_id =r.room_id \n"
+                    + "							join Users u  on i.user_id = u.user_id \n"
+                    + "							join Payments p on i.payment_id = p.payment_id \n"
+                    + "							where u.full_name like ? or r.name like ?";
             //Step2: create obj PrepareStatement
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1,"%" + txt + "%");
-            ps.setString(2,"%" + txt + "%");
+            ps.setString(1, "%" + txt + "%");
+            ps.setString(2, "%" + txt + "%");
             ResultSet rs = ps.executeQuery();
             //Step 4: xu ly kq tra  ve
             while (rs.next()) {
@@ -253,6 +286,7 @@ public class InforDAO extends DBContext {
         }
         return infor;
     }
+
     public static void main(String[] args) {
         System.out.println(new InforDAO().getFollowUserID(3));
     }
