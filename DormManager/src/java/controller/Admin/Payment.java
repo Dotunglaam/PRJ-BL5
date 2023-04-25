@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import modol.Payments;
+import modol.Rooms;
 
 /**
  *
@@ -58,11 +59,28 @@ public class Payment extends HttpServlet {
     throws ServletException, IOException {
         PaymentDAO p = new PaymentDAO();
         ArrayList<Payments> payments = p.getAllPayments();
+        
         if(payments == null){
             PrintWriter out = response.getWriter();
             out.println("Cannot get the data");  
         }else{
-            request.setAttribute("payments", payments);
+            int size = payments.size();
+            int page, numperpage = 5;
+            int num = (size % 5 == 0 ? (size / 5) : ((size / 5)) + 1);//số trang 
+            String xpage = request.getParameter("page");
+            if (xpage == null) {
+                page = 1;
+            } else {
+                page = Integer.parseInt(xpage);
+            }
+
+            int start, end;
+            start = (page - 1) * numperpage;
+            end = Math.min(page * numperpage, size);
+            ArrayList<Payments> list = p.getListByPage(payments, start, end);
+            request.setAttribute("page", page);
+            request.setAttribute("num", num);
+            request.setAttribute("payments", list);
             request.getRequestDispatcher("view/payment.jsp").forward(request, response);
         }
     } 
