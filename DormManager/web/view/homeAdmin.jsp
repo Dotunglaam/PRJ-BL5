@@ -11,18 +11,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Admin Page</title>
-        <link href="css/homeAdmin.css" rel="stylesheet" type="text/css"/>
+
         <style>
+            .inforcreate{
+                border: 1px solid gray; 
+                border-radius: 3px;
+                background-color: #4CAF50;
+                padding: 3px 6px;
+                font-size: 20px;
+                color: white;
+            }
+            h1{
+                text-align: center;
+            }
             table{
                 border-collapse: collapse
             }
-            .content{
-                margin: auto;
-                width: 80%;
-                float: left;
-                margin-left: 30px;
-                height: auto
-            }
+        
             .pagination {
                 display: inline-block;
             }
@@ -54,44 +59,60 @@
     </head>
     <body>
         <div><jsp:include page="menu.jsp"></jsp:include></div>
+            <div class="container-fluid text-center">    
+                <div class="row content">
+                    <div class="col-sm-2 sidenav">
+                       
+                    </div>
+                    <div class="col-sm-8 text-left"> 
+                        <h1>Information</h1>
+                        <div class="table-responsive">          
+                            <table class="table">
+                                <thead>
+                                    <tr>
 
-            <table class="table" border="1">
-                <thead>
-                    <tr>
-                        <th>IN_ID</th>
-                        <th>NAME</th>
-                        <th>ROOM_NAME</th>
-                        <th>FLOOR</th>
-                        <th>PAYMENT_ID</th>
-                        <th>[Room registration date</th>
-                        <th>[Cancellation date]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${data}" var="i">
-                    <tr>
-                        <td>${i.in_id}</td>
-                        <td>${i.getUsers().full_name}</td>
-                        <td>${i.getRooms().name}</td>
-                        <td>${i.getRooms().floor}</td>
-                        <td>${i.getPayments().payment_id}</td>
-                        <td>${i.room_registration_date}</td>
-                        <td>${i.cancellation_date}</td>
-                        <td>   
-                            <a href="inforupdate?inid=${i.in_id}">update</a>
-                            <a href="#" onclick="infordelete(${i.in_id})">delete</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-        
-        <c:set var="page" value="${requestScope.page}"/>
-        <div class="pagination">
-            <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                <a class="${i==page?"active":""}" href="homea?page=${i}">${i}</a> 
-            </c:forEach>
-        </div> </br>
-        <a class="inforcreate" href="inforcreate">Create</a>
+                                        <th>IN_ID</th>
+                                        <th>NAME</th>
+                                        <th>ROOM_NAME</th>
+                                        <th>FLOOR</th>
+                                        <th>PAYMENT_ID</th>
+                                        <th>Room registration date</th>
+                                        <th>Cancellation date</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${data}" var="i">
+                                    <tr>
+                                        <td>${i.in_id}</td>
+                                        <td>${i.getUsers().full_name}</td>
+                                        <td>${i.getRooms().name}</td>
+                                        <td>${i.getRooms().floor}</td>
+                                        <td>${i.getPayments().payment_id}</td>
+                                        <td>${i.room_registration_date}</td>
+                                        <td>${i.cancellation_date}</td>
+                                        <td>   
+                                            <a class="inforcreate" href="inforupdate?inid=${i.in_id}">update</a>
+                                            <a class="inforcreate" href="#" onclick="infordelete(${i.in_id})">delete</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <c:set var="page" value="${requestScope.page}"/>
+                    <div class="pagination">
+                        <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                            <a class="${i==page?"active":""}" href="homea?page=${i}">${i}</a> 
+                        </c:forEach>
+                    </div> </br>
+                    <a class="inforcreate" href="inforcreate">Create</a>
+                    </div>
+                    
+                <div class="col-sm-2 sidenav">
+                </div>
+            </div>
+        </div>
     </body>
 </html>
