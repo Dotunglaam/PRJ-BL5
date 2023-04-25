@@ -21,7 +21,14 @@ import modol.Users;
  * @author ADMIN
  */
 public class PaymentDAO extends DBContext {
-
+    public ArrayList<Payments> getListByPage(ArrayList<Payments> list,
+            int start,int end){
+        ArrayList<Payments> arr=new ArrayList<>();
+        for(int i=start;i<end;i++){
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
     public ArrayList<Payments> getAllPayments() {
         ArrayList<Payments> payment = new ArrayList<>();
         try {

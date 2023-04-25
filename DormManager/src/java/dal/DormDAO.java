@@ -18,7 +18,14 @@ import modol.Dormitories;
  * @author ADMIN
  */
 public class DormDAO extends DBContext {
-
+    public ArrayList<Dormitories> getListByPage(ArrayList<Dormitories> list,
+            int start,int end){
+        ArrayList<Dormitories> arr=new ArrayList<>();
+        for(int i=start;i<end;i++){
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
     public ArrayList<Dormitories> getDorm() {
         ArrayList<Dormitories> dorm = new ArrayList<>();
         try {
