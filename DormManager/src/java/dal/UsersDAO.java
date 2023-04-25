@@ -14,7 +14,8 @@ import modol.Users;
  * @author ADMIN
  */
 public class UsersDAO extends DBContext {
-    public void change(Users u){
+
+    public void change(Users u) {
         String sql = "update Users set password = ? where username=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -25,7 +26,7 @@ public class UsersDAO extends DBContext {
             System.out.println(e);
         }
     }
-    
+
     public ArrayList<Users> getListByPage(ArrayList<Users> list,
             int start, int end) {
         ArrayList<Users> arr = new ArrayList<>();
@@ -151,6 +152,43 @@ public class UsersDAO extends DBContext {
         }
 
         return user;
+    }
+
+    public void insert(Users user) {
+        PreparedStatement stm = null;
+        try {
+            String sql = "INSERT INTO [dbo].[Users]\n"
+                    + "           ([username]\n"
+                    + "           ,[password]\n"
+                    + "           ,[full_name]\n"
+                    + "           ,[role_id]\n"
+                    + "           ,[gender]\n"
+                    + "           ,[dob]\n"
+                    + "           ,[phone])\n"
+                    + "            VALUES(?,?,?,?,?,?,?)";
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, user.getUsername());
+            stm.setString(2, user.getPassword());
+            stm.setString(3, user.getFull_name());
+            stm.setInt(4, user.getRole_id());
+            stm.setBoolean(5, user.isGender());
+            stm.setDate(6, user.getDob());
+            stm.setString(7, user.getPhone());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PaymentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PaymentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PaymentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     public void update(Users user) {
