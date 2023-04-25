@@ -116,6 +116,10 @@
         <servlet-name>HomeAdminInforCreate</servlet-name>
         <servlet-class>controller.Admin.HomeAdminInforCreate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StudentCreate</servlet-name>
+        <servlet-class>controller.Admin.StudentCreate</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -219,6 +223,10 @@
     <servlet-mapping>
         <servlet-name>HomeAdminInforCreate</servlet-name>
         <url-pattern>/inforcreate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentCreate</servlet-name>
+        <url-pattern>/studentcreate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
