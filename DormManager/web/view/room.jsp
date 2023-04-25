@@ -10,17 +10,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Room</title>
-        <link href="css/room.css" rel="stylesheet" type="text/css"/>
+
         <style>
+            .roomcreate{
+                border: 1px solid gray; 
+                border-radius: 3px;
+                background-color: #4CAF50;
+                padding: 3px 6px;
+                font-size: 20px;
+                color: white;
+            }
+            h1{
+                text-align: center;
+            }
             table{
                 border-collapse: collapse
-            }
-            .content{
-                margin: auto;
-                width: 80%;
-                float: left;
-                margin-left: 30px;
-                height: auto
             }
             .pagination {
                 display: inline-block;
@@ -53,44 +57,58 @@
     </head>
     <body>
         <div><jsp:include page="menu.jsp"></jsp:include></div>
-            <table class="table" border="1">
-                <thead>
-                    <tr>
-                        <th>room_id</th>
-                        <th>name</th>
-                        <th>current_people</th>
-                        <th>price</th>
-                        <th>dormitory_id</th>
-                        <th>room_type</th>
-                        <th>floor</th>
-                        <th>status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${room}" var="r">
-                    <tr>
-                        <td>${r.room_id}</td>
-                        <td>${r.name}</td>
-                        <td>${r.current_people}</td>
-                        <td>${r.price}</td>
-                        <td>${r.dormitories.dormitory_id}</td>
-                        <td>${r.room_type}</td>
-                        <td>${r.floor}</td>
-                        <td>${r.status}</td>
-                        <td>   
-                            <a href="roomupdate?rid=${r.room_id}">update</a>
-                            <a href="#" onclick="roomdelete(${r.room_id})">delete</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-        </tbody>
-        </table>
-        <a class="roomcreate" href="roomcreate">Create</a></br>
-        <c:set var="page" value="${requestScope.page}"/>
-        <div class="pagination">
-            <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                <a class="${i==page?"active":""}" href="room?page=${i}">${i}</a> 
-            </c:forEach>
-        </div> 
+            <div class="container-fluid text-center">    
+                <div class="row content">
+                    <div class="col-sm-2 sidenav">
+
+                    </div>
+                    <div class="col-sm-8 text-left"> 
+                        <h1>List Room</h1>
+                        <div class="table-responsive">          
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>room_id</th>
+                                        <th>name</th>
+                                        <th>current_people</th>
+                                        <th>price</th>
+                                        <th>dormitory_id</th>
+                                        <th>room_type</th>
+                                        <th>floor</th>
+                                        <th>status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${room}" var="r">
+                                    <tr>
+                                        <td>${r.room_id}</td>
+                                        <td>${r.name}</td>
+                                        <td>${r.current_people}</td>
+                                        <td>${r.price}</td>
+                                        <td>${r.dormitories.dormitory_id}</td>
+                                        <td>${r.room_type}</td>
+                                        <td>${r.floor}</td>
+                                        <td>${r.status}</td>
+                                        <td>   
+                                            <a class="roomcreate" href="roomupdate?rid=${r.room_id}">update</a>
+                                            <a class="roomcreate" href="#" onclick="roomdelete(${r.room_id})">delete</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>                    
+                    <c:set var="page" value="${requestScope.page}"/>
+                    <div class="pagination">
+                        <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                            <a class="${i==page?"active":""}" href="room?page=${i}">${i}</a> 
+                        </c:forEach>
+                    </div></br>  
+                    <a class="roomcreate" href="roomcreate">Create</a>     
+                </div>
+                <div class="col-sm-2 sidenav">
+                </div>
+            </div>
+        </div>
     </body>
 </html>
