@@ -5,12 +5,18 @@
 
 package controller.Admin;
 
+import dal.InforDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Date;
+import modol.Informations;
+import modol.Payments;
+import modol.Rooms;
+import modol.Users;
 
 /**
  *
@@ -66,7 +72,30 @@ public class HomeAdminInforCreate extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String u_name = request.getParameter("id");
+        String r_name = request.getParameter("r_id");
+        String p_id = request.getParameter("p_id");
+        String rrd = request.getParameter("rrd");
+        String cd = request.getParameter("cd");
+        
+        InforDAO i = new InforDAO();
+        Informations in = new Informations();
+        
+        Users u = new Users();
+        u.setUser_id(Integer.parseInt(u_name));
+        in.setUsers(u);
+        Rooms r = new Rooms();
+        r.setRoom_id(Integer.parseInt(r_name));
+        in.setRooms(r);
+        Payments p = new Payments();
+        p.setPayment_id(Integer.parseInt(p_id));
+        in.setPayments(p);
+        in.setRoom_registration_date(Date.valueOf(rrd));
+        in.setCancellation_date(Date.valueOf(cd));
+        i.insert(in);
+        response.sendRedirect("homea");
+        
     }
 
     /** 
