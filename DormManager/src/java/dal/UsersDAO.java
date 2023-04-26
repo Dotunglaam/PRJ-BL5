@@ -125,6 +125,7 @@ public class UsersDAO extends DBContext {
             String sql = "SELECT [user_id]\n"
                     + "      ,[username]\n"
                     + "      ,[full_name]\n"
+                    + "      ,[password]\n"
                     + "      ,[role_id]\n"
                     + "      ,[gender]\n"
                     + "      ,[dob]\n"
@@ -142,6 +143,7 @@ public class UsersDAO extends DBContext {
                 u.setUser_id(rs.getInt("user_id"));
                 u.setUsername(rs.getString("username"));
                 u.setFull_name(rs.getString("full_name"));
+                u.setPassword(rs.getString("password"));
                 u.setRole_id(rs.getInt("role_id"));
                 u.setGender(rs.getBoolean("gender"));
                 u.setDob(rs.getDate("dob"));

@@ -233,11 +233,12 @@ public class InforDAO extends DBContext {
             String sql = "select * from Informations i join Rooms r on i.room_id =r.room_id \n"
                     + "							join Users u  on i.user_id = u.user_id \n"
                     + "							join Payments p on i.payment_id = p.payment_id \n"
-                    + "							where u.full_name like ? or r.name like ?";
+                    + "							where u.full_name like ? or r.name like ? or r.floor like ?";
             //Step2: create obj PrepareStatement
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, "%" + txt + "%");
             ps.setString(2, "%" + txt + "%");
+            ps.setString(3, "%" + txt + "%");
             ResultSet rs = ps.executeQuery();
             //Step 4: xu ly kq tra  ve
             while (rs.next()) {
