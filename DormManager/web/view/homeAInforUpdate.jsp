@@ -11,16 +11,34 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Update Infor</title>
         <link href="css/updatePayment.css" rel="stylesheet" type="text/css"/>
-        
+        <style>
+            body{
+                text-align: center;
+                justify-content: center;
+                font-size: 30px;
+            }
+            .error{
+                color: red;
+                background-color: white; 
+            }
+            table{
+                margin: auto;
+                margin-top: 20%;
+            }
+            input{
+                height: 30px;
+                font-size: 20px;
+            }
+        </style>
     </head>
     <body>
-        <body>
+    <body>
         <form action="inforupdate" method="POST">
             <table border="0.5">
                 <tbody>
                     <tr>
                         <td>IN_ID</td>
-                        <td><input type="text" name="id" value="${in.in_id}"/> <br/></td>
+                        <td><input type="text" name="id" value="${in.in_id}" readonly=""/> <br/></td>
                     </tr>
                     <tr>
                         <td>Room registration date</td>
@@ -30,7 +48,7 @@
                         <td>Cancellation date</td>
                         <td><input type="date" name="cd" value="${in.cancellation_date}"/></td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td></td>
                         <td><input type="submit" value="Create"></td>
                     </tr>
@@ -41,8 +59,8 @@
                 </tbody>
             </table>
             <br/>
-           
+
         </form>
     </body>
-    </body>
+</body>
 </html>

@@ -72,6 +72,7 @@
                                     <tr>
                                         <th>User_id</th>
                                         <th>Username</th>
+                                        <th>Password</th>
                                         <th>Full_name</th>
                                         <th>Role_id</th>
                                         <th>Gender</th>
@@ -84,6 +85,7 @@
                                     <tr>
                                         <td>${s.getUser_id()}</td>
                                         <td>${s.getUsername()}</td>
+                                        <td>${s.getPassword()}</td>
                                         <td>${s.getFull_name()}</td>
                                         <td>${s.getRole_id()}</td>
                                         <td><c:if test="${s.isGender() == true }">Male</c:if>
