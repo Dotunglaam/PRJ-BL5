@@ -63,7 +63,9 @@
 
                     </div>
                     <div class="col-sm-8 text-left"> 
+                        <br/><br/>
                         <h1>Payment</h1>
+                        <br/><br/>
                         <div class="table-responsive">          
                             <table class="table">
                                 <thead>

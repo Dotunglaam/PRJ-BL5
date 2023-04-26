@@ -11,6 +11,24 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    <style>
+            table{
+                margin: auto;
+            }
+            body{
+                
+                justify-content: center;
+                font-size: 25px;
+            }
+            input{
+                height: 30px;
+                font-size: 20px;
+            }
+            h1{
+                text-align: center;
+                margin-top: 15%;
+            }
+        </style>
     <body>
         <form action="studentcreate" method="POST">
             <h1>Create Student</h1>

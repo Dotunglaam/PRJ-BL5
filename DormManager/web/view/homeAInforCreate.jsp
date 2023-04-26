@@ -10,18 +10,37 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+            table{
+                margin: auto;
+            }
+            body{
+                
+                justify-content: center;
+                font-size: 25px;
+            }
+            input{
+                height: 30px;
+                font-size: 20px;
+            }
+            h1{
+                text-align: center;
+                margin-top: 15%;
+            }
+        </style>
     </head>
     <body>
         <form action="inforcreate" method="POST">
+            <h1>Create Information</h1>
             <table border="0.5">
                 <tbody>
-                   
+
                     <tr>
-                        <td>user_id</td>
+                        <td>User_id</td>
                         <td><input type="text" name="id" /> <br/></td>
                     </tr>
                     <tr>
-                        <td>room_id</td>
+                        <td>Room_id</td>
                         <td><input type="text" name="r_id" /> <br/></td>
                     </tr>
                     <tr>
@@ -36,7 +55,7 @@
                         <td>Cancellation date</td>
                         <td><input type="date" name="cd" /></td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td></td>
                         <td><input type="submit" value="Create"></td>
                     </tr>
@@ -47,7 +66,7 @@
                 </tbody>
             </table>
             <br/>
-           
+
         </form>
     </body>
 </html>

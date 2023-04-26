@@ -12,9 +12,29 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create Payment</title>
     </head>
+    <style>
+            table{
+                margin: auto;
+            }
+            body{
+                
+                justify-content: center;
+                font-size: 25px;
+            }
+            input{
+                height: 30px;
+                font-size: 20px;
+            }
+            h1{
+                text-align: center;
+                margin-top: 15%;
+            }
+        </style>
     <body>
         <form action="paymentcreate" method="POST">
+            <h1>Create Payment</h1>
             <table border="0.5">
+                
                 <tbody>
                     <tr>
                         <td>User_id: </td>

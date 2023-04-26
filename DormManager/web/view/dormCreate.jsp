@@ -12,8 +12,27 @@
         <title>Create Dorm</title>
         <link href="css/createDorm.css" rel="stylesheet" type="text/css"/>
     </head>
+    <style>
+        table{
+                margin: auto;
+            }
+            body{
+                
+                justify-content: center;
+                font-size: 25px;
+            }
+            input{
+                height: 30px;
+                font-size: 20px;
+            }
+            h1{
+                text-align: center;
+                margin-top: 15%;
+            }
+    </style>
     <body>
         <form action="dormcreate" method="POST">
+            <h1>Create Dorm</h1>
             <table border="0.5">
                 <tbody>
                     <tr>

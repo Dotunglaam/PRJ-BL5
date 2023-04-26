@@ -11,9 +11,29 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create Room</title>
         <link href="css/createRoom.css" rel="stylesheet" type="text/css"/>
+        <style>
+            table{
+                margin: auto;
+            }
+            body{
+                
+                justify-content: center;
+                font-size: 25px;
+            }
+            input{
+                height: 30px;
+                font-size: 20px;
+            }
+            h1{
+                text-align: center;
+                margin-top: 15%;
+            }
+        </style>
     </head>
+    
     <body>
         <form action="roomcreate" method="POST">
+            <h1>Create Room</h1>
             <table border="0.5">
                 <tbody>
                     <tr>
